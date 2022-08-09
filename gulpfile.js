@@ -7,8 +7,8 @@ var pug = require('gulp-pug')
 var pug_locals = require('./pug-locals')
 
 const BASE_DIR = '.'
-const SRC_DIR = path.join(BASE_DIR, 'website', 'src')
-const DEST_DIR = path.join(BASE_DIR, 'website', 'build')
+const SRC_DIR = path.join(BASE_DIR, 'src')
+const DEST_DIR = path.join(BASE_DIR, 'build')
 const LIB_SRC_DIR = path.join(BASE_DIR, 'node_modules')
 const LIB_DEST_DIR = path.join(DEST_DIR, 'libs')
 
