@@ -1,4 +1,7 @@
 {
+  "name": "talus.cc",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "@tabler/icons": "^1.50.0",
     "autoprefixer": "^10.4.0",
