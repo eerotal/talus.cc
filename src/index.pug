@@ -1,0 +1,164 @@
+extends templates/base.pug
+
+mixin social-icon(icon, url)
+    //- A a social media link icon.
+    a.mx-2(href=url)
+        img.inline-block.w-12.drop-shadow-lg.transition-transform.duration-100.transform(class="hover:scale-110", src=icon)
+
+mixin social-link(text, url)
+    //- Add a social media link text.
+    a.block.transition-colors.duration-100.whitespace-nowrap(class="hover:text-blue-900", href=url) #[+tabler-icon("chevron-right", "inline-block w-5 h-5 mb-1")]#{text}
+
+mixin tabler-icon(icon, classes)
+    //- Include a Tabler SVG icon.
+    svg(class=classes, width="10", height="10")
+        use(xlink:href="libs/icons/tabler-sprite.svg#tabler-" + icon)
+
+mixin gallery-image(image, text)
+    //- Add a gallery image.
+    div.relative.h-full.w-full.shrink-0.flex.flex-col.justify-center.pb-10(class="md:w-96")
+        img.max-h-full.rounded-md.shadow-lg.snap-center(src="gallery/images/" + image)
+        span.absolute.bottom-0.block.w-full.text-gray-100.text-center.text-gray-100 #[+tabler-icon("chevron-right", "inline-block w-5 h-5 mb-1")]#{text}
+
+mixin technology(word)
+    //- Add a "Technology competence" term.
+    a.text-gray-500.font-medium.inline-block.m-2.transition-colors.duration-100(class="hover:text-blue-900", href="https://www.google.com/search?q=" + encodeURIComponent(word)) #{word}
+
+mixin bullet-point(text)
+    //- Add a bullet point in the "I am..." list.
+    li.my-4 #[+tabler-icon("checkbox", "inline-block text-green-500 w-5 h-5 mb-1 mr-1")] #{text}
+
+mixin background
+    //- Add elements to create the section background.
+    div.absolute.w-full.h-full.bg-gradient-to-t.from-emerald-600.to-emerald-400
+    img.absolute.w-full.h-full.object-cover.opacity-10(src="/assets/liquid-cheese.svg")
+
+block body
+    -
+      var technologies = [
+          "Embedded Systems",
+          "Electronics Hardware Design",
+          "Software Development",
+          "Microcontrollers",
+          "ARM",
+          "FPGA",
+          "CAD",
+          "C",
+          "C++",
+          "Python",
+          "Django",
+          "Rust",
+          "Yocto",
+          "Bash",
+          "Git",
+          "Subversion",
+          "Docker",
+          "Docker Swarm",
+          "PHP",
+          "JavaScript",
+          "Matlab",
+          "HTML",
+          "Real-Time Systems",
+          "Jailhouse",
+          "Xenomai",
+          "Asymmetric Multiprocessing",
+          "Qt"
+      ]
+
+    -
+       var images = {
+           "3d_printer.jpg": "A 3D printer",
+           "3d_printer_electronics.jpg": "3D printer control electronics",
+           "bench_psu_front.jpg": "Adjustable laboratory power supply",
+           "bench_psu_pcb.jpg": "Adjustable laboratory power supply electronics",
+           "distortion_pcb.jpg": "Distortion pedal PCB",
+           "distortion_pedal_finished.jpg": "Distortion pedal",
+           "distortion_pedal_opened.jpg": "Distortion pedal electronics",
+           "distortion_pedal_render.png": "3D CAD model of a distortion pedal",
+           "drum_controller_interface_board.jpg": "Electronic drum controller",
+           "drum_controller_mcu_board.jpg": "Electronic drum controller",
+           "libresignage.png": "LibreSignage - A digital signage system",
+           "pencil_holder.jpg": "3D printed pencil holder",
+           "speaker_stand.jpg": "Two-way stereo speaker stands",
+           "speakers.jpeg": "Two-way stereo speakers",
+           "subwoofer.jpg": "Active subwoofer"
+       }
+
+    div.w-full.h-full
+        div.relative.w-full.h-screen.shadow-lg.snap-start
+            +background
+
+            div.relative.w-full.h-full.flex.flex-col.justify-center.items-center.px-8
+                div.bg-white.p-3.rounded-full.w-64.shadow-lg.transform-translate.duration-100.translate(class="hover:scale-110")
+                    img.w-full.h-full.rounded-full(src="assets/eero.jpg")
+
+                h1.mt-8.text-6xl.text-gray-100.text-center(class="md:text-8xl") Hi, I'm Eero Talus!
+
+                p.mt-4.text-lg.text-gray-100.font-medium.text-center
+                    | An Electrical Engineering student from
+                    | #[a.whitespace-nowrap.link(href="https://goo.gl/maps/EUnmoctXxn1H1fqn8") #[+tabler-icon("map-pin", "inline-block w-5 h-5 mb-1.5 ml-0.5 -mr-1")] Finland]
+
+                div.mt-8
+                    +social-icon("assets/Twitter.png", "https://twitter.com/eerotal")
+                    +social-icon("assets/GitHub.png", "https://github.com/eerotal")
+                    +social-icon("assets/LinkedIn.png", "https://linkedin.com/in/eerotal")
+
+        div.relative.w-full.min-h-screen.flex.flex-col.justify-center.items-center.py-16.px-8.snap-start
+            div.px-4.flex.flex-col.items-center
+                h1.text-4xl.text-blue-900.text-center(class="md:text-6xl") I am...
+                div.w-24.border-t-4.mt-4.border-t-blue-900.rounded-lg
+
+            div.flex.flex-row.justify-center.mt-8.w-full(class="lg:w-4/6")
+                ul.text-gray-500.font-medium
+                    +bullet-point("A 3rd year Electrical Engineering student.")
+                    +bullet-point("Currently working as an Embedded Software Design Trainee.")
+                    +bullet-point("Experienced in many programming languages and mainly interested in low-level embedded programming.")
+                    +bullet-point("Aspiring to work as a Hardware Designer.")
+                    +bullet-point("Familiar with many software, hardware and mechanical design and manufacturing technologies.")
+                    +bullet-point("Interested in mathematics, physics, music and sports.")
+
+            div.px-4.flex.flex-col.items-center
+                h1.mt-8.text-4xl.text-blue-900.text-center(class="md:text-6xl") Technology competence
+                div.w-24.border-t-4.mt-4.border-t-blue-900.rounded-lg
+
+            div.flex.flex-row.justify-center.whitespace-nowrap.flex-wrap.mt-8.w-full(class="lg:w-4/6")
+                each t in technologies
+                    +technology(t)
+
+        div.relative.w-full.h-screen.shadow-lg.snap-start
+            +background
+
+            div.relative.w-full.h-full.flex.flex-col.justify-center.items-center.px-8.py-16
+                div.px-4.flex.flex-col.items-center
+                    h1.text-4xl.text-gray-100.text-center(class="md:text-6xl") These are some of my hobby projects
+                    div.w-24.border-t-4.mt-4.border-t-gray-100.rounded-lg
+
+                div.w-full.flex.flex-row.items-center.gap-8.mt-16.overflow-x-auto.snap-x.snap-mandatory.snap-always(class="md:w-5/6")
+                    each text, img in images
+                        +gallery-image(img, text)
+
+        div.w-full.bg-gray-50.flex.flex-row.justify-center.pt-16.pb-24.text-gray-500.snap-end
+            div.mx-8.w-full.flex.flex-col.items-center(class="md:w-3/6 md:flex-row md:items-start md:justify-between")
+                div.mt-8
+                    p.text-center(class="md:text-left")
+                        | Made with #[+tabler-icon("coffee", "inline-block w-5 h-5 mb-1")]
+                        | by Eero Talus
+                    p.mt-4.text-center.text-black(class="md:text-left")
+                        | Open source libraries
+                    p.text-center(class="md:text-left")
+                        | Backgrounds #[a.link(href="https://www.svgbackgrounds.com/") SVG Backgrounds]
+                    p.text-center(class="md:text-left")
+                        | Icons #[a.link(href="/assets/licenses/MIT_Tabler_Icons.txt") Tabler Icons]
+                    p.text-center(class="md:text-left")
+                        | Fonts
+                        | #[a.link(href="/assets/licenses/OFL_Lobster.txt") Lobster]
+                        | & #[a.link(href="/assets/licenses/OFL_Exo_2.txt") Exo 2]
+                    p.mt-4.text-center(class="md:text-left")
+                        | Copyright &copy; 2021 Eero Talus
+                div.mt-8
+                    +social-link("Twitter", "https://twitter.com/eerotal")
+                    +social-link("GitHub", "https://github.com/eerotal")
+                    +social-link("LinkedIn", "https://linkedin.com/in/eerotal")
+
+
+

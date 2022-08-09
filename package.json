@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "@tabler/icons": "^1.50.0",
+    "autoprefixer": "^10.4.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.0.0",
+    "http-server": "^14.0.0",
+    "live-server": "^1.2.1",
+    "postcss": "^8.4.5",
+    "pug": "^3.0.2",
+    "sass": "^1.45.1",
+    "tailwindcss": "^3.0.7"
+  },
+  "scripts": {
+    "server": "npx gulp watch & npx live-server website/build/"
+  }
+}

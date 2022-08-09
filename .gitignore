@@ -1,0 +1,6 @@
+# Ignore emacs generated files.
+.#*
+\#*
+
+build/
+node_modules/
